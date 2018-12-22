@@ -1,0 +1,4 @@
+SELECT producto.idProducto, producto.nombreProducto, producto.stock, SUM(detalle_venta.totalXProducto) as Ingresos, 
+SUM(detalle_compra.totalXProducto) as Egresos, (SUM(detalle_venta.totalXProducto)-SUM(detalle_compra.totalXProducto)) as gananciaTotal 
+FROM detalle_venta LEFT JOIN producto ON detalle_venta.idProducto=producto.idProducto RIGHT JOIN detalle_compra 
+ON producto.idProducto = detalle_compra.idProducto GROUP by idProducto
